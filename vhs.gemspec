@@ -5,11 +5,11 @@ require 'vhs/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "vhs"
-  spec.version       = Vhs::VERSION
+  spec.version       = VHS::VERSION
   spec.authors       = ["Joaquin Rivera Padron"]
   spec.email         = ["joaquin.rivera@xing.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary       = %q{Intelligent handling of VCR cassettes for the ultimate experience on API's stubbing on tests.}
+  spec.description   = %q{Intelligent handling of VCR cassettes for the ultimate experience on API's stubbing on tests.}
   spec.homepage      = ""
   spec.license       = "MIT"
 

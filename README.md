@@ -1,4 +1,4 @@
-# Vhs
+# VHS
 
 TODO: Write a gem description
 

@@ -1,3 +1,3 @@
-module Vhs
+module VHS
   VERSION = "0.0.1"
 end

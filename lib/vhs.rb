@@ -1,5 +1,5 @@
 require "vhs/version"
 
-module Vhs
+module VHS
   # Your code goes here...
 end
