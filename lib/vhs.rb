@@ -6,12 +6,6 @@ module VHS
   extend self
 
   def load
-    # does this makes sense here?
-    VCR.configure do |c|
-      c.cassette_library_dir  = Rails.root.join("spec", "vcr")
-      c.hook_into :typhoeus
-    end
-
     require "vhs/typhoeus_stub"
   end
 
