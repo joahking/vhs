@@ -7,14 +7,25 @@ module VHS
 
   def load
     require "vhs/typhoeus_stub"
+    @active = true
+  end
+
+  def turned_on?
+    @active
+  end
+
+  def turn_off
+    @active = false
   end
 
   # Loads a cassette for the request unless one is already loaded.
   def load_cassette(request)
-    cassette_name = cassette_name request
-    if VCR.current_cassette.nil? ||
-      (VCR.current_cassette && VCR.current_cassette.name != cassette_name)
-      VCR.insert_cassette cassette_name
+    if turned_on?
+      cassette_name = cassette_name request
+      if VCR.current_cassette.nil? ||
+        (VCR.current_cassette && VCR.current_cassette.name != cassette_name)
+        VCR.insert_cassette cassette_name
+      end
     end
   end
 
