@@ -1,9 +1,26 @@
 require "vhs/version"
+require "vhs/configuration"
 require "vcr"
 require "typhoeus"
 
 module VHS
   extend self
+
+  # Public: Modify VHS configuration
+  #
+  # Example:
+  #   VHS.configure do |c|
+  #     c.api_host = your_test_sandbox_url
+  #   end
+  def configure
+    yield configuration
+  end
+
+  # Accessor for VHS::Configuration
+  def configuration
+    @configuration ||= Configuration.new
+  end
+  alias :config :configuration
 
   def load
     require "vhs/typhoeus_stub"
