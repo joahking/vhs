@@ -53,20 +53,8 @@ module VHS
   def cassette_name(request)
     uri = URI request.url
     #TODO use uri.host in name to use other apis
-    elems = uri.path.split "/"
-    new_elems = []
-    elems.each_index do |idx|
-      new_elems[idx] = if idx > 0 && is_integer?(elems[idx])
-                         "#{ elems[idx -1].singularize }_id"
-                       else
-                         elems[idx]
-                       end
-    end
-    new_elems.join "/"
+    return uri.path
   end
 
-  def is_integer?(str)
-    str.to_i.to_s == str
-  end
 end
 
