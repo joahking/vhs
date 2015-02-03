@@ -41,7 +41,7 @@ module VHS
       cassette_name = cassette_name request
       if VCR.current_cassette.nil? ||
         (VCR.current_cassette && VCR.current_cassette.name != cassette_name)
-        VCR.insert_cassette cassette_name
+        VCR.insert_cassette cassette_name, erb: { api_host: config.api_host }
       end
     end
   end
