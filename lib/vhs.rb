@@ -9,8 +9,8 @@ module VHS
   # Public: Modify VHS configuration
   #
   # Example:
-  #   VHS.configure do |c|
-  #     c.api_host = your_test_sandbox_url
+  #   VHS.configure do |vhs|
+  #     vhs.api_host = AppConfig.sandbox.rest_url
   #   end
   def configure
     yield configuration
