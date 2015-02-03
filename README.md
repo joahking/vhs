@@ -20,19 +20,19 @@ Or install it yourself as:
 
 ## Usage
 
-Configure your specs adding the @spec/support/vhs.rb@ file provided (TODO provide it).
+Configure your specs adding the `spec/support/vhs.rb` file provided (TODO provide it).
 
 Then run your spec suite, after that all the cassettes used by your specs are
 saved under the directory `spec/fixtures/vcr`.
 
 If you check one of the cassetttes you'll notice the uri has a fixed value (i.e.
 your test sandbox's rest url). For the cassettes to be ready for anyone running
-the tests they need to be dynamized, i.e. to replace that fixed sandbox rest url
-with the value in @AppConfig.sandbox.rest_url@ as specified in
-@spec/support/vhs.rb@, you can dymanize your cassettes running:
+the specs they need to be dynamized, i.e. to replace that fixed sandbox rest url
+with the value in `AppConfig.sandbox.rest_url` as specified in
+`spec/support/vhs.rb`, you can dymanize your cassettes running:
 
 ```bash
-ruby -Ilib ./vendor/gems/vhs/bin/vhs-dynamize-cassettes.rb
+$ ruby -Ilib ./vendor/gems/vhs/bin/vhs-dynamize-cassettes.rb
 ```
 
 After that add the cassettes to your git repo and enjoy your fast test suite.
