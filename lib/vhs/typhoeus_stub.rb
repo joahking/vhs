@@ -7,16 +7,13 @@ Typhoeus::Hydra::Stubbing::SharedMethods.class_eval do
 
   def find_stub_from_request(request)
     VHS.load_cassette request
-    puts "cassette #{ VCR.current_cassette.object_id }:#{ VCR.current_cassette.name }"
-
     find_stub_from_request_vcr request
   end
 end
 
 ::Typhoeus::Hydra.after_request_before_on_complete do |request|
   unless VCR.library_hooks.disabled?(:typhoeus) || request.response.mock?
-    # guarantees that we save new responses to file
-    VCR.current_cassette.eject if VCR.current_cassette
+    VHS.write_cassette request
   end
 end
 

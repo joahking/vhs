@@ -39,17 +39,40 @@ module VHS
   def load_cassette(request)
     if turned_on?
       cassette_name = cassette_name request
-      if VCR.current_cassette.nil? ||
-        (VCR.current_cassette && VCR.current_cassette.name != cassette_name)
+      request_cassette = find_cassette cassette_name
+
+      if request_cassette.nil?
         VCR.insert_cassette cassette_name, erb: { api_host: config.api_host }
+
+        #TODO pass a logger in configuration and use it
+        puts "~ [vhs] NEW cassette loaded #{ cassette_name }"
+      else
+        puts "~ [vhs] .. reusing cassette #{ cassette_name }"
       end
     end
   end
 
-  # The cassette name is made out of the request path.
-  # Example:
-  # for a request with path "/rest/users/users/1"
-  # the cassette name will be "/rest/users/users/user_id"
+  def write_cassette(request)
+    #TODO if turned_on?
+    cassette_name = cassette_name request
+    request_cassette = find_cassette cassette_name
+
+    if request_cassette
+      #TODO pass a logger in configuration and use it
+      puts "~ [vhs] Writing cassette #{ cassette_name }"
+      request_cassette.eject
+    end
+  end
+
+  #TODO the logic of find_cassette and cassette_name is duplicated in VCR
+  #OPTIMIZE this uses VCR private method
+  def find_cassette(cassette_name)
+    VCR.send(:cassettes).select do |c|
+      c.name == cassette_name
+    end.first
+  end
+
+  # The cassette name is the request path.
   def cassette_name(request)
     uri = URI request.url
     #TODO use uri.host in name to use other apis
