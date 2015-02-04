@@ -45,9 +45,9 @@ module VHS
         VCR.insert_cassette cassette_name, erb: { api_host: config.api_host }
 
         #TODO pass a logger in configuration and use it
-        puts "~ [vhs] NEW cassette loaded #{ cassette_name }"
+        puts "~ [vhs] Loaded cassette #{ cassette_name }"
       else
-        puts "~ [vhs] .. reusing cassette #{ cassette_name }"
+        puts "~ [vhs] Existing cassette #{ cassette_name }"
       end
     end
   end
@@ -59,7 +59,7 @@ module VHS
 
     if request_cassette
       #TODO pass a logger in configuration and use it
-      puts "~ [vhs] Writing cassette #{ cassette_name }"
+      puts "~ [vhs] Wrote cassette #{ cassette_name }"
       request_cassette.eject
     end
   end
