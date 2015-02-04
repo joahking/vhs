@@ -31,7 +31,13 @@ module VHS
     @active
   end
 
+  def turn_on
+    VCR.turn_on!
+    @active = true
+  end
+
   def turn_off
+    VCR.turn_off!
     @active = false
   end
 
