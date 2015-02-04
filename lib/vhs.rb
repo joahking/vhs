@@ -42,7 +42,7 @@ module VHS
       request_cassette = find_cassette cassette_name
 
       if request_cassette.nil?
-        VCR.insert_cassette cassette_name, erb: { api_host: config.api_host }
+        VCR.insert_cassette cassette_name, cassette_options
 
         #TODO pass a logger in configuration and use it
         puts "~ [vhs] Loaded cassette #{ cassette_name }"
@@ -50,6 +50,16 @@ module VHS
         puts "~ [vhs] Existing cassette #{ cassette_name }"
       end
     end
+  end
+
+  #TODO move cassette options to spec config file?
+  def cassette_options
+    {
+      erb: { api_host: config.api_host },
+      allow_playback_repeats: true,
+      record: :once
+      # match_requests_on: [:method, :uri, :query]
+    }
   end
 
   def write_cassette(request)
