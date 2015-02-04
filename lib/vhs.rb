@@ -74,9 +74,16 @@ module VHS
     end
   end
 
+  def remove_cassettes
+    VCR.remove_cassettes
+  end
+
+private
+
   #TODO the logic of find_cassette and cassette_name is duplicated in VCR
   #OPTIMIZE this uses VCR private method
   def find_cassette(cassette_name)
+    #TODO do not use VCR private :cassettes method
     VCR.send(:cassettes).select do |c|
       c.name == cassette_name
     end.first
