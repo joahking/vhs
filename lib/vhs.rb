@@ -38,7 +38,7 @@ module VHS
   # Loads a cassette for the request unless one is already loaded.
   def load_cassette(request)
     if turned_on?
-      cassette_name = cassette_name request
+      cassette_name = VCR.cassette_name request
       request_cassette = find_cassette cassette_name
 
       if request_cassette.nil?
@@ -54,7 +54,7 @@ module VHS
 
   def write_cassette(request)
     #TODO if turned_on?
-    cassette_name = cassette_name request
+    cassette_name = VCR.cassette_name request
     request_cassette = find_cassette cassette_name
 
     if request_cassette
@@ -70,13 +70,6 @@ module VHS
     VCR.send(:cassettes).select do |c|
       c.name == cassette_name
     end.first
-  end
-
-  # The cassette name is the request path.
-  def cassette_name(request)
-    uri = URI request.url
-    #TODO use uri.host in name to use other apis
-    return uri.path
   end
 
 end
