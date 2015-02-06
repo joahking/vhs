@@ -32,11 +32,17 @@ module VHS
   end
 
   def turn_on
+    #TODO
+    # - add a param to leave VCR on?
+    # - allow to pass a block to run with VHS on?
     VCR.turn_on!
     @active = true
   end
 
   def turn_off
+    #TODO
+    # - add a param to leave VCR on?
+    # - allow to pass a block to run with VHS off?
     VCR.turn_off!
     @active = false
   end

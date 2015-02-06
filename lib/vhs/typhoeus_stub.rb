@@ -6,6 +6,7 @@ Typhoeus::Hydra::Stubbing::SharedMethods.class_eval do
   alias_method :find_stub_from_request_vcr, :find_stub_from_request
 
   def find_stub_from_request(request)
+    #TODO add turn_on? check here
     VHS.load_cassette request
     find_stub_from_request_vcr request
   end
@@ -13,6 +14,7 @@ end
 
 ::Typhoeus::Hydra.after_request_before_on_complete do |request|
   unless VCR.library_hooks.disabled?(:typhoeus) || request.response.mock?
+    #TODO add turn_on? check here
     VHS.write_cassette request
   end
 end
