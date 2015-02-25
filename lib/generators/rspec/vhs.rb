@@ -5,7 +5,11 @@ end
 
 VHS.configure do |vhs|
   vhs.api_host = AppConfig.sandbox.rest_url
-  #TODO logging, logger, cassettes refresh frequency and forced refresh
+
+  # uncomment this line to see VHS log
+  # vhs.log = true
+
+  #TODO logger, cassettes refresh frequency and forced refresh
 end
 
 RSpec.configure do |rspec|
