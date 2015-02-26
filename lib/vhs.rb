@@ -1,4 +1,5 @@
 require "vhs/version"
+require "vhs/cassetter"
 require "vhs/configuration"
 require "vcr"
 require "typhoeus"
@@ -68,7 +69,7 @@ module VHS
     {
       erb: { api_host: config.api_host },
       allow_playback_repeats: true,
-      record: :once
+      record: config.forced_update ? :all : :once
       # match_requests_on: [:method, :uri, :query]
     }
   end
@@ -84,6 +85,12 @@ module VHS
     end
   end
 
+  def cassette_update(cassette_filename)
+    Cassetter.update cassette_filename
+  end
+
+  #TODO move to Cassetter, together with many methods here, and let this module
+  # just proxy methods to classes
   def remove_cassettes
     VCR.remove_cassettes
   end
