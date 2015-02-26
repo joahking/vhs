@@ -20,6 +20,7 @@ class VHS::Cassetter
       request_options[:params] = cassette_request[:params]
     end
 
+    #TODO use a method directly on VHS
     VHS.config.forced_update = true # forces cassette to be recorded
 
     request = Typhoeus::Request.new cassette_request[:uri], request_options
