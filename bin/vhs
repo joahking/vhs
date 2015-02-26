@@ -1,49 +1,12 @@
 #!/usr/bin/env ruby
-#require 'rubygems' # ruby1.9 doesn't "require" it though
-require 'thor'
 
-#TODO move to lib/vhs/cli
-module VHS
+require 'pathname'
+lib = Pathname.new(__FILE__).dirname.join('..', 'lib').expand_path
+$LOAD_PATH.unshift lib.to_s
 
-  class Cassettes < Thor
+begin require 'rubygems'; rescue LoadError; end
 
-    desc 'dynamize CASSETTES_PATH', 'Replaces api urls in cassettes with <%= api_host %>'
-    method_option :cassettes_path, default: 'spec/fixtures/vhs'
-    def dynamize
-      cassettes_path = options[:cassettes_path]
-      bin_dir = File.expand_path(File.dirname(__FILE__))
-      shell_script_path = File.join(bin_dir, 'dynamize_cassettes.sh')
-
-      `#{shell_script_path} #{ cassettes_path }`
-      puts 'Cassettes have being dynamized'
-    end
-
-  end
-
-  class Config < Thor
-
-    desc 'rspec DESTINATION_PATH', 'Configures rspec to use VHS'
-    method_option :destination_path, default: 'spec/support'
-    def rspec
-      destination_path = options[:destination_path]
-      bin_dir = File.expand_path(File.dirname(__FILE__))
-      rspec_config_file = File.open File.join(bin_dir, '..', 'lib/generators/rspec/vhs.rb')
-
-      FileUtils.cp rspec_config_file, destination_path
-      puts "Spec config file vhs.rb copied to #{ destination_path }"
-    end
-
-  end
-
-  class CLI < Thor
-    desc 'config SUBCOMMAND ARGS', 'Configures VHS for test frameworks'
-    subcommand 'config', Config
-
-    desc 'cassettes SUBCOMMAND ARGS', 'Cassettes handling commands'
-    subcommand 'cassettes', Cassettes
-  end
-
-end
+require 'vhs/cli'
 
 VHS::CLI.start
 
