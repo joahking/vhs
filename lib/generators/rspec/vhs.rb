@@ -1,5 +1,5 @@
 VCR.configure do |vcr|
-  vcr.cassette_library_dir = Rails.root.join("spec", "fixtures", "vcr")
+  vcr.cassette_library_dir = Rails.root.join("spec", "fixtures", "vhs")
   vcr.hook_into :typhoeus
 end
 
