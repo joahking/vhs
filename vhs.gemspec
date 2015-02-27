@@ -22,7 +22,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "thor", "~> 0.19.1"
   spec.add_runtime_dependency "typhoeus", "~> 0.2.1"  #XING's old libraries
   #TODO make the dependency correctly use our vcr gem
-  spec.add_runtime_dependency "vcr", "~> 2.0.0.beta1"
+  spec.add_runtime_dependency "vcr", "2.0.0.beta1.vhs.pre.0.0.1"
 
   spec.add_development_dependency "bundler", "~> 1.7"
   spec.add_development_dependency "rake", "~> 10.0"
