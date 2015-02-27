@@ -3,12 +3,12 @@ require 'yaml'
 
 class VHS::Cassetter
 
-  #TODO write this as an instance method
+  #TODO
+  # - write this as an instance method
+  # - allow to pass cassette with or w/o VCR.configuration.cassette_library_dir
   def self.update(cassette_filename)
-    #TODO
-    # - allow to pass cassette with or w/o VCR.configuration.cassette_library_dir
-
-    cassette_hash = YAML.load_file(cassette_filename)
+    cassette_yaml = VCR::Cassette::Reader.new(cassette_filename, VHS::cassette_options[:erb]).read
+    cassette_hash = YAML.load cassette_yaml
     cassette_request = cassette_hash.first[:request]
 
     request_options = {
