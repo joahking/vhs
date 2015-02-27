@@ -14,6 +14,13 @@ module VHS
       puts 'Cassettes have being dynamized'
     end
 
+    desc 'update CASSETTE_PATH', 'Updates a cassette'
+    def update(cassette_path)
+      VHS::CLILoader.new.load_vhs
+      VHS.cassette_update cassette_path
+      puts "Cassette #{ cassette_path } has being updated"
+    end
+
   end
 end
 
