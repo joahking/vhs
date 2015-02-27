@@ -8,9 +8,6 @@ class VHS::Configuration
   # Should VHS log or not. Defaults to false.
   attr_accessor :log
 
-  # For internal use. Used by VHS to force cassettes to be recorded.
-  attr_accessor :forced_update
-
   # Configuration defaults
   def initialize
     #TODO use this one on turn_on method

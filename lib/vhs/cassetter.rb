@@ -1,4 +1,3 @@
-require 'fileutils'
 require 'yaml'
 
 class VHS::Cassetter
@@ -20,8 +19,7 @@ class VHS::Cassetter
       request_options[:params] = cassette_request[:params]
     end
 
-    #TODO use a method directly on VHS
-    VHS.config.forced_update = true # forces cassette to be recorded
+    VHS.cassette_force_updates # forces cassette to be recorded
 
     request = Typhoeus::Request.new cassette_request[:uri], request_options
     hydra   = Typhoeus::Hydra.new

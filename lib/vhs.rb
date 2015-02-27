@@ -49,6 +49,15 @@ module VHS
     @active = false
   end
 
+  # Public: forces the update of cassettes.
+  def cassette_force_updates
+    @cassette_forced_update = true
+  end
+
+  def cassette_forced_updates?
+    @cassette_forced_update
+  end
+
   # Loads a cassette for the request unless one is already loaded.
   def load_cassette(request)
     if turned_on?
@@ -70,7 +79,7 @@ module VHS
     {
       erb: { api_host: config.api_host },
       allow_playback_repeats: true,
-      record: config.forced_update ? :all : :once
+      record: cassette_forced_updates? ? :all : :once
       # match_requests_on: [:method, :uri, :query]
     }
   end
