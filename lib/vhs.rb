@@ -1,8 +1,9 @@
+require 'typhoeus'
+require 'vcr'
+
 require 'vhs/version'
 require 'vhs/cassetter'
 require 'vhs/configuration'
-require 'vcr'
-require 'typhoeus'
 
 module VHS
   extend self
