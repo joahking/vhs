@@ -1,6 +1,7 @@
 require 'thor'
 require 'vhs/cli/cassettes'
 require 'vhs/cli/config'
+require 'vhs/cli/cli_loader'
 
 module VHS
 
