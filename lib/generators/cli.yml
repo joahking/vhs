@@ -1,0 +1,10 @@
+vcr:
+  cassette_library_dir: 'spec/fixtures/vhs'
+  hook_into: :typhoeus
+
+vhs:
+  # to get api_host value run this command:
+  # bundle exec rails r -e test 'puts AppConfig.sandbox.rest_url'
+  api_host: 'and put value here'
+  # log: true
+

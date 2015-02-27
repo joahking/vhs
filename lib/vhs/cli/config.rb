@@ -5,7 +5,8 @@ module VHS
     desc 'cli', 'Configures the VHS CLI to run advanced commands'
     def cli
       copy_file 'cli.yml', '.vhs.yml'
-      puts "CLI config file .vhs.yml copied to ."
+      append_to_file '.gitignore', '.vhs.yml'
+      puts "VHS CLI configured"
     end
 
     desc 'rspec DESTINATION_PATH', 'Configures rspec to use VHS'
@@ -13,7 +14,7 @@ module VHS
     def rspec
       destination_path = options[:destination_path]
       copy_file 'rspec/vhs.rb', destination_path
-      puts "Spec config file vhs.rb copied to #{ destination_path }"
+      puts "VHS configured for RSpec"
     end
 
 private
