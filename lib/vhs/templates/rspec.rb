@@ -1,17 +1,3 @@
-VCR.configure do |vcr|
-  vcr.cassette_library_dir = Rails.root.join("spec", "fixtures", "vhs")
-  vcr.hook_into :typhoeus
-end
-
-VHS.configure do |vhs|
-  vhs.api_host = AppConfig.sandbox.rest_url
-
-  # uncomment this line to see VHS log
-  # vhs.log = true
-
-  #TODO logger, cassettes refresh frequency and forced refresh
-end
-
 RSpec.configure do |rspec|
   # using `vhs: false` as tag in context, describe and it blocks turns off VHS
   rspec.around(:example, vhs: false) do |example|
@@ -20,6 +6,7 @@ RSpec.configure do |rspec|
     VHS.turn_on
   end
 
+  #TODO move this to xing-vhs or so
   rspec.before(:each) do
     # disconnects Typhoeus response_token check as it break VHS stubs
     allow_any_instance_of(RESTApi::Request).to receive(:check_response_token).and_return(true)
@@ -34,5 +21,5 @@ RSpec.configure do |rspec|
   end
 end
 
-VHS.load
+VHS::Loader.load
 
