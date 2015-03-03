@@ -1,6 +1,6 @@
 require 'thor'
 require 'vhs/cli/config'
-require 'vhs/cli/cli_loader'
+require 'vhs/loader'
 
 module VHS
 
@@ -42,7 +42,7 @@ module VHS
                     cassette # it is a filename
                   end
 
-      VHS::CLILoader.new.load_vhs
+      Loader.new.load
       cassettes.split(/\n/).each do |cassette|
         puts "Updating cassette #{ cassette }"
         VHS.cassette_update cassette
@@ -63,7 +63,7 @@ module VHS
     private
 
     def self.source_root
-      @loader ||= VHS::CLILoader.new.cassettes_path
+      @source_root ||= Loader.new.cassettes_path
     end
 
     # Private: finds all cassettes.

@@ -1,8 +1,8 @@
 module VHS
-  class CLILoader
-    #TODO turn this one into VHS::Loader and use it in spec/support/vhs.rb
+  class Loader
+
     # Public: configures VHS from .vhs.yml config file and loads it.
-    def load_vhs
+    def load
       configure_vcr
       configure_vhs
       VHS.load
