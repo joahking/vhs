@@ -7,7 +7,7 @@ $LOAD_PATH.unshift lib.to_s
 begin require 'rubygems'; rescue LoadError; end
 
 require 'vhs'
-require 'vhs/cli'
+require 'vhs/cli/cli'
 
-VHS::CLI.start
+VHS::CLI::CLI.start
 
