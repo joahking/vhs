@@ -42,7 +42,7 @@ module VHS
                     cassette # it is a filename
                   end
 
-      Loader.new.load
+      Loader.load
       cassettes.split(/\n/).each do |cassette|
         puts "Updating cassette #{ cassette }"
         VHS.cassette_update cassette

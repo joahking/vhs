@@ -4,6 +4,7 @@ require 'vcr'
 require 'vhs/version'
 require 'vhs/cassetter'
 require 'vhs/configuration'
+require 'vhs/loader'
 
 module VHS
   extend self

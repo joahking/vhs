@@ -1,6 +1,10 @@
 module VHS
   class Loader
 
+    def self.load
+      new.load
+    end
+
     # Public: configures VHS from .vhs.yml config file and loads it.
     def load
       configure_vcr
