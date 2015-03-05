@@ -4,7 +4,7 @@ module VHS
 
     desc 'cli', 'Copies .vhs.yml configuration file'
     def cli
-      copy_file 'vhs.yml', '.vhs.yml'
+      template 'vhs.yml', '.vhs.yml'
       append_to_file '.gitignore', '.vhs.yml'
       puts "VHS CLI configured"
     end

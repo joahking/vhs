@@ -3,8 +3,6 @@ vcr:
   hook_into: :typhoeus
 
 vhs:
-  # to get api_host value run this command:
-  # bundle exec rails r -e test 'puts AppConfig.sandbox.rest_url'
-  api_host: 'and put value here'
+  api_host: "<%= `bundle exec rails r -e test 'puts AppConfig.sandbox.rest_url'`.gsub(/\n/, '') %>"
   # log: true
 
