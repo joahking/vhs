@@ -34,8 +34,8 @@ Then configure VHS and rspec to use VHS as:
     $ vhs config rspec
 
 The first command copies a `.vhs.yml` file to your root with configuration
-options for VHS, check it out to see the options. The second command configures
-RSpec to use VHS.
+options for VHS, check it out to see the options. The second command copies
+a `spec/support/vhs.rb` to configure RSpec to use VHS.
 
 Now you are ready to run your specs using VHS.
 
@@ -59,16 +59,16 @@ Check the help of both commands to know the posibilities at your disposal.
 TimeBandits break the usage of VHS, to make it work, you need to remove lines like
 
 ```ruby
-    RESTApi.run_with_time_bandit(TimeBandits::CustomConsumers::Search)
+RESTApi.run_with_time_bandit(TimeBandits::CustomConsumers::Search)
 ```
 
 TODO add details here and in wiki pages about conflicts and ways of fixing them
 
 ## Turning VHS off
 
-If you have already stubbed calls to `RESTApi` in your spec, you
-can turn VHS off using the provided rspec tag at `describe`, `context`, or `it`
-level:
+If you have already stubbed calls to `RESTApi` in your specs, you
+can turn VHS off using the provided rspec tag at the level of `describe`,
+`context`, or `it` blocks like this:
 
 ```ruby
 # some spec file
@@ -114,7 +114,7 @@ test suite.
 ## TODO
 - Provide a wiki pages with specs
 - Try in in jenkins
-- Use it with test unit
+- Try it with test unit
 - write tests
 - clean up code here and in VCR
 
