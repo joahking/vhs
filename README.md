@@ -28,14 +28,19 @@ And then execute:
 
     $ bundle
 
-Then configure VHS and rspec to use VHS as:
+Configure VHS:
 
     $ vhs config cli
+
+This copies a `.vhs.yml` file to your root with configuration options for VHS,
+check it out to see the options. It is also gitignored so you can configure VHS
+at will without affecting your teammates.
+
+Now configure RSpec to use VHS:
+
     $ vhs config rspec
 
-The first command copies a `.vhs.yml` file to your root with configuration
-options for VHS, check it out to see the options. The second command copies
-a `spec/support/vhs.rb` to configure RSpec to use VHS.
+This copies a `spec/support/vhs.rb` file, make sure you include in your spec_helper.
 
 Now you are ready to run your specs using VHS.
 
