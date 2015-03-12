@@ -15,12 +15,12 @@ module VHS
       end
 
       # Public: returns a string with a list, \n separated, of cassettes with
-      # HTTP code not 200
+      # HTTP code not 2xx
       def error_str
         `#{ error_cassettes_cmd }`
       end
 
-      # Public: returns an array with all cassettes with HTTP code not 200
+      # Public: returns an array with all cassettes with HTTP code not 2xx
       def error
         `#{ error_cassettes_cmd } | #{ rm_trailing_chars_cmd }`.split(/\n/)
       end
@@ -46,10 +46,10 @@ module VHS
         "grep 'code: #{ code }' #{ path } -R | #{ rm_trailing_colon_cmd }"
       end
 
-      # Private: finds all cassettes which HTTP code is not 200.
+      # Private: finds all cassettes which HTTP code is not 2xx.
       # Returns a list, \n separated, of cassettes with code behind
       def error_cassettes_cmd
-        "grep 'code:' #{ path } -R | grep -v 'code: 200' | #{ rm_trailing_colon_cmd }"
+        "grep 'code:' #{ path } -R | grep -v 'code: 2..' | #{ rm_trailing_colon_cmd }"
       end
 
       # Private: removes everything from output leaving just filenames.

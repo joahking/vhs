@@ -18,13 +18,10 @@ module VHS
       def list(cassette = 'all')
         case cassette
         when 'all'
-          puts 'Listing all cassettes'
           puts Cassettes.new.all_str
         when 'error'
-          puts 'Listing error cassettes'
           puts Cassettes.new.error_str
         else
-          puts "Cassettes by regexp #{ cassette }"
           puts Cassettes.new.regexp_str(cassette)
         end
       end
