@@ -80,8 +80,8 @@ module VHS
     {
       erb: { api_host: config.api_host },
       allow_playback_repeats: true,
-      record: cassette_forced_updates? ? :all : :once
-      # match_requests_on: [:method, :uri, :query]
+      record: cassette_forced_updates? ? :all : :once,
+      match_requests_on: [:method, :uri, :body, :params]
     }
   end
 
