@@ -43,13 +43,13 @@ module VHS
       #         are found
       # Returns a list, \n separated, of cassettes with code behind
       def all_cassettes_cmd(code = '')
-        "grep 'code: #{ code }' #{ path } -R | #{ rm_trailing_colon_cmd }"
+        "grep -E '^ +code: #{ code }' #{ path } -R | #{ rm_trailing_colon_cmd }"
       end
 
       # Private: finds all cassettes which HTTP code is not 2xx.
       # Returns a list, \n separated, of cassettes with code behind
       def error_cassettes_cmd
-        "grep 'code:' #{ path } -R | grep -v 'code: 2..' | #{ rm_trailing_colon_cmd }"
+        "grep -E '^ +code:' #{ path } -R | grep -v ' code: 2..' | #{ rm_trailing_colon_cmd }"
       end
 
       # Private: removes everything from output leaving just filenames.
