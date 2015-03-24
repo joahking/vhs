@@ -2,6 +2,8 @@ require 'yaml'
 
 class VHS::Cassetter
 
+  #FIXME this is broken as of version 0.2.0 due to requests with Tempfiles!
+
   #TODO
   # - write this as an instance method
   # - allow to pass cassette with or w/o VCR.configuration.cassette_library_dir

@@ -117,11 +117,12 @@ After that add the cassettes to your git repo and your team can enjoy your fast
 test suite.
 
 ## TODO
-- Provide a wiki pages with specs
 - Try in in jenkins
+- Provide a wiki pages with specs
 - Try it with test unit
-- write tests
+- write specs!
 - clean up code here and in VCR
+- fix the CLI cassettes update command
 
 ## Contributing
 
