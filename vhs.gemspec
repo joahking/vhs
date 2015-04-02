@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = VHS::VERSION
   spec.authors       = ["Joaquin Rivera Padron"]
   spec.email         = ["joaquin.rivera@xing.com"]
-  spec.summary       = %q{Stubs all API calls in your test suite without changing your tests.}
-  spec.description   = %q{Intelligent handling of VCR cassettes for the ultimate experience on API's stubbing on tests.}
+  spec.summary       = %q{Automatic stubs of all API calls in your test suite.}
+  spec.description   = %q{Intelligent handling of VCR cassettes to automatically record and replay all API calls in your tests.}
   spec.homepage      = ""
   spec.license       = "MIT"
 
