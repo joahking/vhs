@@ -21,7 +21,7 @@ stubbing what is not the scope of your test.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'vhs', '~> 0.2.0'
+gem 'vhs'
 ```
 
 And then execute:
@@ -115,6 +115,15 @@ You can dymanize your cassettes running:
 
 After that add the cassettes to your git repo and your team can enjoy your fast
 test suite.
+
+## Clean up after suite run
+
+After the cassettes are added to the repo, it can be the case that running your
+suite still generates new cassettes. To remove them easily use the command
+
+    $ vhs clean
+
+It will remove every cassette not added or commited to git.
 
 ## TODO
 - Try in in jenkins
