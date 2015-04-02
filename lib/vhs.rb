@@ -46,6 +46,10 @@ module VHS
     #TODO
     # - add a param to leave VCR on?
     # - allow to pass a block to run with VHS off?
+
+    # we need to save all cassettes before turning off, to avoid VCR exceptions
+    eject_all_cassettes
+
     VCR.turn_off!
     @active = false
   end
@@ -98,6 +102,12 @@ module VHS
 
   def cassette_update(cassette_filename)
     Cassetter.update cassette_filename
+  end
+
+  def eject_all_cassettes
+    VCR.send(:cassettes).each do |cassette|
+      cassette.eject
+    end
   end
 
   #TODO move to Cassetter, together with many methods here, and let this module
