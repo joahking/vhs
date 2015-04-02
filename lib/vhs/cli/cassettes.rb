@@ -36,6 +36,10 @@ module VHS
         `#{ all_cassettes_cmd(code) } | #{ rm_trailing_chars_cmd }`.split(/\n/)
       end
 
+      def clean
+        `#{ rm_cassettes_not_in_git_cmd }`
+      end
+
       private
 
       # Private: finds all cassettes.
@@ -59,6 +63,11 @@ module VHS
 
       def rm_trailing_colon_cmd
         "sed 's/\.yml:/.yml/g'"
+      end
+
+      # Private: removes cassettes that are not commited or added to git.
+      def rm_cassettes_not_in_git_cmd
+        "git status #{path} | grep -v 'modified' | grep -v 'new file' | grep '#{path}' | awk '{ print $1 }' | xargs rm"
       end
 
       def path

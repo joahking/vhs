@@ -58,6 +58,11 @@ module VHS
         puts 'Cassettes have being dynamized'
       end
 
+      desc 'clean', 'Removes all cassettes not added to git'
+      def clean
+        Cassettes.new.clean
+      end
+
       private
 
       def self.source_root
