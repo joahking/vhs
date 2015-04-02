@@ -72,8 +72,8 @@ module VHS
       if request_cassette.nil?
         VCR.insert_cassette cassette_name, cassette_options
 
-        puts "~ [vhs] Loaded cassette #{ cassette_name }" if config.log
-      elsif config.log
+        puts "~ [vhs] Loaded cassette #{ cassette_name }" if config.log_load
+      elsif config.log_load
         puts "~ [vhs] Existing cassette #{ cassette_name }"
       end
     end
@@ -95,7 +95,7 @@ module VHS
     request_cassette = find_cassette cassette_name
 
     if request_cassette
-      puts "~ [vhs] Wrote cassette #{ cassette_name }" if config.log
+      puts "~ [vhs] Wrote cassette #{ cassette_name }" if config.log_write
       request_cassette.eject
     end
   end

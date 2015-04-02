@@ -4,5 +4,6 @@ vcr:
 
 vhs:
   api_host: "<%= `bundle exec rails r -e test 'puts AppConfig.sandbox.rest_url'`.gsub(/\n/, '') %>"
-  # log: true
+  # log_load: true
+  # log_write: true
 

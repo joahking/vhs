@@ -5,8 +5,11 @@ class VHS::Configuration
   # The sandbox host your test suite calls. Must be set, lib/vhs.rb shows how.
   attr_accessor :api_host
 
-  # Should VHS log or not. Defaults to false.
-  attr_accessor :log
+  # Should VHS log cassettes load. Defaults to false.
+  attr_accessor :log_load
+
+  # Should VHS log cassettes write. Defaults to false.
+  attr_accessor :log_write
 
   # Configuration defaults
   def initialize
