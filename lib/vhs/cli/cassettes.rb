@@ -67,7 +67,7 @@ module VHS
 
       # Private: removes cassettes that are not commited or added to git.
       def rm_cassettes_not_in_git_cmd
-        "git status #{path} | grep -v 'modified' | grep -v 'new file' | grep '#{path}' | awk '{ print $1 }' | xargs rm"
+        "git status #{path} | grep -v 'modified' | grep -v 'new file' | grep '#{path}' | awk '{ print $1 }' | xargs rm -rf"
       end
 
       def path
